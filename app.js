@@ -83,14 +83,19 @@ app.route("/articles/:articleTitle")
     .get(function (req, res) {
         Article.findOne({ title: req.params.articleTitle }, function (err, article) {
             if (!err) {
-                res.send(article);
+                if (article !== undefined && article !== null) {
+                    res.send(article);
+                } else {
+                    const titleName = req.params.articleTitle;
+                    res.send("Could not GET requested article: '" + titleName + "', since its not existed");
+                }
             } else {
                 res.send(err);
             }
         });
     })
 
-    //? OverWright (update) the *ENTIRE* document 
+    //? Update (overwrite) the *ENTIRE* document 
     .put(function (req, res) {
         Article.updateOne(
             { title: req.params.articleTitle }, // condition query
@@ -123,15 +128,26 @@ app.route("/articles/:articleTitle")
     })
 
     .delete(function (req, res) {
-        Article.deleteOne(
-            { title: req.params.articleTitle },
-            function (err) {  //! * delete One *
-                if (!err) {
-                    res.send("Successfully deleted an article");
+        Article.findOne({ title: req.params.articleTitle }, function (err, article) {
+            if (!err) {
+                if (article !== null) {
+                    Article.deleteOne(
+                        { title: article.title },
+                        function (err) {  //! * delete One *
+                            console.log(article);
+                            if (!err) {
+                                res.send("Successfully deleted the selected article: " + article.title);
+                            } else {
+                                res.send(err);
+                            }
+                        })
                 } else {
-                    res.send(err);
-                }
-            });
+                    res.send("Could not find the selected article")
+                };
+            } else {
+                res.send(err);
+            }
+        });
     });
 
 
