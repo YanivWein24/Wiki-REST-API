@@ -28,12 +28,6 @@ const articleSchema = {
 
 const Article = mongoose.model("Article", articleSchema);
 
-// const test = new Article({
-//     title: "Test1",
-//     content: "This is a test"
-// })
-
-// test.save();
 
 //? ///////////////////   requests targeting ALL articles   /////////////////
 
