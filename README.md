@@ -1,9 +1,10 @@
 # Wiki-REST-API
+<br>
 
 ## Requirements:
 * Node.js & Express
 * MongoDB
-* Postman (sending HTTP requests)
+* Postman (to send HTTP requests)
 * Download the code or clone it to your local repository.
 * `npm install` all dependencies from `package.json`.
 * Run `app.js` on a local node server (default PORT number: 3000).  
@@ -17,15 +18,16 @@ app.listen(3000, function () {
 <br>  
 
 ## Sending HTTP requests via Postman:
-* If you wish to  target ALL the objects, use this URL:  
+* **If you wish to  target ALL the objects, use this URL:**  
   - localhost:PortNumber/articles/  
-  - for example: localhost:3000/articles/
-* If you wish to  target a specific object, use this URL:  
+  - Example: &nbsp; localhost:3000/articles/
+
+* **If you wish to  target a specific object, use this URL:**  
   - localhost:PortNumber/articles/ArticleTitle  
-  - for example: localhost:3000/articles/API  
+  - Example: &nbsp; localhost:3000/articles/API  
 
 If you wish to add `Key:Value` pairs for your request (for example, for a `put` request), tap on  
-The "Body" section inside your request in postman, and select "x-www-form-urlencoded" encoding.  
+the "Body" section inside your request in postman, and select "x-www-form-urlencoded" encoding.  
 Here you can add as many `Key:Value` pairs as you like.  
 <br>  
 
