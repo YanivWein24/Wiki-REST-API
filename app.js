@@ -43,9 +43,6 @@ app.route("/articles")
     })
 
     .post(function (req, res) {
-        console.log(req.body.title);
-        console.log(req.body.content);
-
         const newArticle = new Article({
             title: req.body.title,
             content: req.body.content
@@ -104,7 +101,7 @@ app.route("/articles/:articleTitle")
         );
     })
 
-    //? OverWright (update) only *SOME* attributes of the document 
+    //? Update (overwrite) only *SOME* attributes of the document 
     .patch(function (req, res) {
         Article.updateOne(
             { title: req.params.articleTitle }, // condition query
